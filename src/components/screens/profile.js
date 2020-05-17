@@ -11,11 +11,13 @@ const Dashboard = () => {
     })
     .then(res => res.json())
     .then(result =>{
-        console.log(result)
+        //console.log(result)
         setUserdata(result)
     })
   },[])
+ 
   console.log(userdata.tnaame)
+  
   return(
     <div>
         <div style={{
@@ -64,20 +66,12 @@ const Dashboard = () => {
         justifyContent:"space-around"
     }}>
         <div>
-            { userdata.tnaame}
-            {/* {
-              for(let i in ) userdata.tnaame.map(ele =>{
-                   return(
-                       <h6>ele</h6>
-                   )
-               }) 
-            }  */}
-             {/* <img style ={{width:"150px",height:"150px",borderRadius:"75px"}}
+             <img style ={{width:"150px",height:"150px",borderRadius:"75px"}}
              src="https://images.unsplash.com/photo-1531956656798-56686eeef3d4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt=""/>
              <h6 style={{
             textAlign:"center",
             fontFamily:"Montserrat Subrayada , sans-serif"
-            }}>Topic name</h6> */}
+            }}>Topic name</h6>
             
         </div>
     </div>

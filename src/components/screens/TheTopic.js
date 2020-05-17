@@ -1,13 +1,20 @@
 import React, { useState, useEffect } from 'react'
+import {useLocation} from "react-router-dom"
 
 const TheTopic = (props) => {
+    let data = useLocation();
+    console.log(data.state._id)
     const [thistopic,setThistopic] = useState([])
     useEffect(() => {
         fetch('http://localhost:3600/topic',{
+          method:"post",
           headers:{
             "Content-Type":"application/json",
             'Authorization':"Bearer "+ localStorage.getItem('jwt')
-          }
+          },
+          body:JSON.stringify({
+            _id:data.state._id
+        })
         })
         .then(res => res.json())
         .then(result =>{
@@ -16,7 +23,8 @@ const TheTopic = (props) => {
         })
       },[])
 
-      console.log(thistopic)
+      // console.log(thistopic)
+      // console.log(thistopic.name)
   return(
     <div>
       <div style={{
@@ -31,18 +39,22 @@ const TheTopic = (props) => {
           />
           </div>
           <div>
-          <button className ='btn waves-effect waves-light #c62828 blue darken-3'>Start game</button>
-          <button className ='btn waves-effect waves-light #c62828 green darken-3'>Follow</button>
+          <button 
+          className ='btn waves-effect waves-light #c62828 blue darken-3'
+          >Start game
+          </button>
+          <button 
+          className ='btn waves-effect waves-light #c62828 green darken-3'
+          >Follow
+          </button>
           </div>
-          
-       
       </div>
       <div>
-        <h4>Topic Name</h4>
+        <h4>{thistopic.name}</h4>
       </div>
       <div>
         <h4>Description</h4>
-        <p>gfdgnm,nvsmngm, ,mng,ds,nmfsd,mv nmcvbnvflkgvkflkjgfsklgjfklsnglskfnbvljknfvbnslfnvfslnvbfknblkfnlbknfdlkbnlfdknblkefesdak j;dglj;lj ;lj;lgfk;lkejr hiuhroughkfl teoih uheiufh snvkl urehgerkj nbiubrgkjrb jkbnkebgkjbkj befkjbgfjlkdlk lbhlkbsdlb bujbrkgfbug brgburbub khbrgkjrbkbgv  brgkhnfui ujbnfjhrbgvj brgjbrubu jbvkjbkjbn ujbvgkbfbvru brkbg ubgkjrgbk wqprwwruwopehgvdsakn lhgflksjgdlk pojgrewijf iaif ioeoiwytwjrpi  iifbkj iohjfvdij oij jtgjfepidjfpfp ohlkksd hnweklgk lilkgslhhfilejfeioh oi jglujsdjflk hrsglj ih</p>
+        <p>{thistopic.Description}</p>
       </div>
     </div>
    )

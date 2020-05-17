@@ -18,7 +18,7 @@ const Alltopics = () => {
         })
       },[])
    
-      console.log(topicList)
+      //console.log(topicList)
     
       if(!topicList.length){
         return(<div>
@@ -37,9 +37,9 @@ const Alltopics = () => {
                         {
                             item.item.map(subitem =>{
                                 return(
-                                       <Link to ="#" onClick ={() => console.log(subitem)}> 
-                                       <h6>{subitem.name}</h6> 
-                                      </Link>
+                                    <Link to = {{ pathname: '/topic' ,state: {_id:subitem._id}}}>
+                                    <h6>{subitem.name}</h6>
+                                    </Link>
                                 )
                             })
                         }
