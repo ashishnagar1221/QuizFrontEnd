@@ -4,7 +4,7 @@ const Dashboard = () => {
     const [userdata, setUserdata] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:3600/userprofile',{
+    fetch('https://quizaap.herokuapp.com/userprofile',{
       headers:{
         'Authorization':"Bearer "+ localStorage.getItem('jwt')
       }

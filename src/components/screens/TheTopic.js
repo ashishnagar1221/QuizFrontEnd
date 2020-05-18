@@ -6,7 +6,7 @@ const TheTopic = (props) => {
     console.log(data.state._id)
     const [thistopic,setThistopic] = useState([])
     useEffect(() => {
-        fetch('http://localhost:3600/topic',{
+        fetch('https://quizaap.herokuapp.com/topic',{
           method:"post",
           headers:{
             "Content-Type":"application/json",

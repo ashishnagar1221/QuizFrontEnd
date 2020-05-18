@@ -6,7 +6,7 @@ import { Link, Route } from "react-router-dom";
 const Alltopics = () => {
     const [topicList,setTopicList] = useState([])
     useEffect(() => {
-        fetch('http://localhost:3600/alltopic',{
+        fetch('https://quizaap.herokuapp.com/alltopic',{
           headers:{
             "Content-Type":"application/json",
             'Authorization':"Bearer "+ localStorage.getItem('jwt')

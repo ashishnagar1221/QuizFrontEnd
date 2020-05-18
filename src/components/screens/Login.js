@@ -11,7 +11,7 @@ const Login = () => {
     const [password,setPassword] = useState("");
 
     const PostData = ()=>{
-        fetch("/signin",{
+        fetch("https://quizaap.herokuapp.com/signin",{
             method:"post",
                 headers:{
                     "Content-Type":"application/json"
