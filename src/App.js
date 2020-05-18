@@ -9,6 +9,7 @@ import Dashboard from './components/screens/profile'
 import Alltopics from './components/screens/allTopics';
 import {reducer, initialState} from './components/reducers/userReducer'
 import TheTopic from './components/screens/TheTopic';
+import Result from './components/screens/Result';
 
 export const UserContext = createContext()
 
@@ -42,6 +43,9 @@ const Routing  = ()=> {
     </Route>
     <Route path='/Signup'>
       <SignUp/>
+    </Route>
+    <Route path='/Result'>
+      <Result/>
     </Route>
     <Route path='/Quiz'>
       <Quiz/>

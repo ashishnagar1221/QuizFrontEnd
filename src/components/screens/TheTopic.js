@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import {useLocation} from "react-router-dom"
+import {useLocation, Link} from "react-router-dom"
 
 const TheTopic = (props) => {
     let data = useLocation();
@@ -24,7 +24,7 @@ const TheTopic = (props) => {
       },[])
 
       // console.log(thistopic)
-      // console.log(thistopic.name)
+      console.log(thistopic._id)
   return(
     <div>
       <div style={{
@@ -41,7 +41,7 @@ const TheTopic = (props) => {
           <div>
           <button 
           className ='btn waves-effect waves-light #c62828 blue darken-3'
-          >Start game
+          ><Link to={{ pathname: "/Quiz" , state: {_id:thistopic._id}}}>Start game</Link>
           </button>
           <button 
           className ='btn waves-effect waves-light #c62828 green darken-3'

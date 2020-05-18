@@ -10,7 +10,6 @@ const NavBar = () =>{
       return[
         <li><Link to="/Alltopics">Alltopics</Link></li>,
         <li><Link to='/dashboard'>dashboard</Link></li>,
-        <li><Link to="/Quiz">Quiz</Link></li>,
         <li>
         <button className ='btn waves-effect waves-light #c62828 red darken-3'
           onClick={() =>{

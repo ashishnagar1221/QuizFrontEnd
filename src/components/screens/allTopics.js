@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, Route } from "react-router-dom";
-import TheTopic from "./TheTopic";
+
 
 
 const Alltopics = () => {
