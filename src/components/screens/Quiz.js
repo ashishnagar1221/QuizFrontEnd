@@ -12,7 +12,7 @@ const Quiz = () => {
 
   
   useEffect (() =>{
-    fetch('/gameStart',{
+    fetch('https://quizaap.herokuapp.com/gameStart',{
       method:"post",
     headers : { 
       "Content-Type":"application/json",
