@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react'
-import {useLocation, Link} from "react-router-dom"
+import {useLocation, Link , useHistory} from "react-router-dom"
+import M from 'materialize-css'
 
 const TheTopic = (props) => {
     let data = useLocation();
     console.log(data.state._id)
+    const history = useHistory()
     const [thistopic,setThistopic] = useState([])
     useEffect(() => {
-        fetch('https://quizaap.herokuapp.com/topic',{
+        fetch('http://localhost:3600/topic',{
           method:"post",
           headers:{
             "Content-Type":"application/json",
@@ -45,6 +47,24 @@ const TheTopic = (props) => {
           </button>
           <button 
           className ='btn waves-effect waves-light #c62828 green darken-3'
+          onClick={() =>{
+            console.log(thistopic._id)
+            fetch('http://localhost:3600/follow',{
+              method:"put",
+              headers : { 
+                "Content-Type":"application/json",
+                'Authorization':"Bearer "+ localStorage.getItem('jwt')
+              },
+              body:JSON.stringify({
+                followId:thistopic._id
+            })
+            })
+            .then(res => {
+              M.toast({html:`Followed this topic `})  
+              history.push('/dashboard')
+              //res.json()
+            })
+          }}
           >Follow
           </button>
           </div>

@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 
 const Dashboard = () => {
     const [userdata, setUserdata] = useState([]);
+    const [list,setList] = useState([])
 
   useEffect(() => {
-    fetch('https://quizaap.herokuapp.com/userprofile',{
+    fetch('http://localhost:3600/userprofile',{
       headers:{
         'Authorization':"Bearer "+ localStorage.getItem('jwt')
       }
@@ -13,11 +14,15 @@ const Dashboard = () => {
     .then(result =>{
         //console.log(result)
         setUserdata(result)
+        setList(result.tnaame)
     })
   },[])
- 
-  console.log(userdata.tnaame)
   
+  //console.log(list.length)
+  //const renderList = 
+  
+
+
   return(
     <div>
         <div style={{
@@ -34,7 +39,7 @@ const Dashboard = () => {
             />
         </div>
         <div>
-            <h4> {userdata.name}</h4>
+            <h4> Name</h4>
         </div>
     </div>
 
@@ -65,15 +70,18 @@ const Dashboard = () => {
         flexDirection:"row",
         justifyContent:"space-around"
     }}>
-        <div>
+        {list.map((ele) =>{
+        return (
+            <div>
              <img style ={{width:"150px",height:"150px",borderRadius:"75px"}}
              src="https://images.unsplash.com/photo-1531956656798-56686eeef3d4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt=""/>
              <h6 style={{
             textAlign:"center",
             fontFamily:"Montserrat Subrayada , sans-serif"
-            }}>Topic name</h6>
-            
+            }}>{ele}</h6>
         </div>
+        )
+    })}
     </div>
     </div>
     </div>
