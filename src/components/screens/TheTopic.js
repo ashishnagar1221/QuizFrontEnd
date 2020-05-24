@@ -1,12 +1,14 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import {useLocation, Link , useHistory} from "react-router-dom"
+import {UserContext} from '../../App'
 import M from 'materialize-css'
 
 const TheTopic = (props) => {
-    let data = useLocation();
-    console.log(data.state._id)
+    let data = useLocation()
     const history = useHistory()
+    const {state,dispatch} = useContext(UserContext)
     const [thistopic,setThistopic] = useState([])
+    const [toggleFollow,setToggleFollow] = useState("Follow")
     useEffect(() => {
         fetch('http://localhost:3600/topic',{
           method:"post",
@@ -25,8 +27,8 @@ const TheTopic = (props) => {
         })
       },[])
 
-      // console.log(thistopic)
-      console.log(thistopic._id)
+      console.log(data)
+      //console.log(thistopic._id)
   return(
     <div>
       <div style={{
@@ -43,12 +45,14 @@ const TheTopic = (props) => {
           <div>
           <button 
           className ='btn waves-effect waves-light #c62828 blue darken-3'
-          ><Link to={{ pathname: "/Quiz" , state: {_id:thistopic._id}}}>Start game</Link>
+          ><Link className ="link" to={{ pathname: "/Quiz" , state: {_id:thistopic._id}}}>Start game</Link>
           </button>
           <button 
           className ='btn waves-effect waves-light #c62828 green darken-3'
           onClick={() =>{
-            console.log(thistopic._id)
+            console.log(toggleFollow)
+            if (toggleFollow=="Follow") setToggleFollow("Unfollow")
+            else setToggleFollow("Follow")
             fetch('http://localhost:3600/follow',{
               method:"put",
               headers : { 
@@ -60,12 +64,12 @@ const TheTopic = (props) => {
             })
             })
             .then(res => {
-              M.toast({html:`Followed this topic `})  
-              history.push('/dashboard')
+              M.toast({html:`${toggleFollow}ed this topic `})  
+              //history.push('/dashboard')
               //res.json()
             })
           }}
-          >Follow
+          >{toggleFollow}
           </button>
           </div>
       </div>

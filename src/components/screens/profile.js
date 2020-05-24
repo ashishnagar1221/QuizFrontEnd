@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const Dashboard = () => {
     const [userdata, setUserdata] = useState([]);
     const [list,setList] = useState([])
+    const [listId,setListId] = useState([])
 
   useEffect(() => {
     fetch('http://localhost:3600/userprofile',{
@@ -15,10 +17,11 @@ const Dashboard = () => {
         //console.log(result)
         setUserdata(result)
         setList(result.tnaame)
+        setListId(result.topic_followed)
     })
   },[])
   
-  //console.log(list.length)
+  console.log(userdata)
   //const renderList = 
   
 
@@ -39,7 +42,7 @@ const Dashboard = () => {
             />
         </div>
         <div>
-            <h4> Name</h4>
+            <h4>{userdata.name}</h4>
         </div>
     </div>
 
@@ -70,7 +73,7 @@ const Dashboard = () => {
         flexDirection:"row",
         justifyContent:"space-around"
     }}>
-        {list.map((ele) =>{
+        {list.map((ele,i) =>{
         return (
             <div>
              <img style ={{width:"150px",height:"150px",borderRadius:"75px"}}
@@ -78,7 +81,7 @@ const Dashboard = () => {
              <h6 style={{
             textAlign:"center",
             fontFamily:"Montserrat Subrayada , sans-serif"
-            }}>{ele}</h6>
+            }}> <Link to = {{ pathname: '/topic' ,state: {_id:listId[i]}}}>{ele}</Link></h6>
         </div>
         )
     })}
