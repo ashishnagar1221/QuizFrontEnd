@@ -5,6 +5,7 @@ const Result = (props) => {
     let score = useLocation()
     console.log(score.state.score)
     const [res,setRes] = useState([])
+    const [answerSheet,SetAnswerSheet] = useState([])
     
     useEffect (() =>{
       fetch('http://localhost:3600/result',{
@@ -21,15 +22,41 @@ const Result = (props) => {
     .then(res => res.json())
     .then(result =>{
         setRes(result)
+        SetAnswerSheet(result.answerTally)
     })
   },[]) 
     
-  console.log(res)
+  console.log(answerSheet)
   return(
     <div>Result
         <div>
         <h3>Your Score </h3>
         <h6>{res.score}/5</h6>
+        </div>
+        <div>
+          <table>
+            <th>
+              <td>No.</td>
+              <td>Question</td>
+              <td>User's Choice</td>
+              <td>Correct Answer</td>
+            </th>
+            
+              {
+                answerSheet.map((ele,x) =>{
+                  return(
+                    <tr>
+                    <td>{x+1}</td>
+                    <td>{ele.question}</td>
+                    <td>{ele.marked_choice}</td>
+                    <td>{ele.correct_choice}</td>
+                    </tr>
+                  )
+                })
+              }
+            
+            
+          </table>
         </div>
     </div>
     
