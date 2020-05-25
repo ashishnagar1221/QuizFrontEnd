@@ -26,11 +26,13 @@ const Quiz = () => {
   })
 },[]) 
 
+console.log(allquestions)
+
 // const nextState = score.map(a => a.ques != ques ? [...a,{"ques":ques,"ans":x}]:a)
 // setScore(nextState)
 //function to combine next and score update
 const next_n_score = (x,ques) =>{
-  setScore(prev => [...prev,{"ques":ques,"ans":x}])
+  setScore(prev => [...prev,{"ques_id":ques._id,"question":ques.question,"opt":x,"ans":ques.answer}])
 }
 console.log(score)
 
@@ -44,22 +46,22 @@ return(<div>
         <div >
           <h5>{allquestions[currQues].question}</h5>
                 <button 
-                  onClick={()=>{next_n_score(0,allquestions[currQues]._id)}}
+                  onClick={()=>{next_n_score(0,allquestions[currQues])}}
                 >
                   <p>{allquestions[currQues].options[0]}</p>
                 </button>
                 <button 
-                  onClick={()=>{next_n_score(1,allquestions[currQues]._id)}}
+                  onClick={()=>{next_n_score(1,allquestions[currQues])}}
                 >
                   <p>{allquestions[currQues].options[1]}</p>
                 </button>
                 <button 
-                  onClick={()=>{next_n_score(2,allquestions[currQues]._id)}}
+                  onClick={()=>{next_n_score(2,allquestions[currQues])}}
                 >
                   <p>{allquestions[currQues].options[2]}</p>
                 </button>
                 <button 
-                  onClick={()=>{next_n_score(3,allquestions[currQues]._id)}}
+                  onClick={()=>{next_n_score(3,allquestions[currQues])}}
                 >
                   <p>{allquestions[currQues].options[3]}</p>
                 </button>
