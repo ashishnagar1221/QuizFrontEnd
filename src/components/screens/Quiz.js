@@ -3,12 +3,10 @@ import { useLocation, Link, Redirect } from 'react-router-dom'
 import { render } from '@testing-library/react';
 
 const Quiz = () => {
-   let data = useLocation();
-   //console.log(data.state._id) 
+   let data = useLocation() 
   const [allquestions,setAllquestions] = useState([])
   const [currQues,setCurQues] = useState(0)
-  const [userAnswer,setUserAnswer] = useState(null)
-  const [score,setScore]= useState(0)
+  const [score,setScore]= useState([])
 
   
   useEffect (() =>{
@@ -27,22 +25,12 @@ const Quiz = () => {
       setAllquestions(result)
   })
 },[]) 
-//console.log(allquestions)
-// const resultdisplay = () =>{
-//     console.log(`Score is ${score}`)
-// }
-//console.log(userAnswer)
+
+// const nextState = score.map(a => a.ques != ques ? [...a,{"ques":ques,"ans":x}]:a)
+// setScore(nextState)
 //function to combine next and score update
-const next_n_score = (x) =>{
-  if(x == allquestions[currQues].answer){
-    setScore(score + 1)
-  }
-  if(!(currQues < allquestions.length-1)){
-    //console.log("reached")
-    //return(<Link to={{ pathname: "/Result" , state: {score}}}>Submit</Link>)
-  }else{
-    setCurQues(currQues+1)
-  }
+const next_n_score = (x,ques) =>{
+  setScore(prev => [...prev,{"ques":ques,"ans":x}])
 }
 console.log(score)
 
@@ -56,37 +44,28 @@ return(<div>
         <div >
           <h5>{allquestions[currQues].question}</h5>
                 <button 
-                  onClick={()=>{next_n_score(0)}}
+                  onClick={()=>{next_n_score(0,allquestions[currQues]._id)}}
                 >
                   <p>{allquestions[currQues].options[0]}</p>
                 </button>
                 <button 
-                  onClick={()=>{next_n_score(1)}}
+                  onClick={()=>{next_n_score(1,allquestions[currQues]._id)}}
                 >
                   <p>{allquestions[currQues].options[1]}</p>
                 </button>
                 <button 
-                  onClick={()=>{next_n_score(2)}}
+                  onClick={()=>{next_n_score(2,allquestions[currQues]._id)}}
                 >
                   <p>{allquestions[currQues].options[2]}</p>
                 </button>
                 <button 
-                  onClick={()=>{next_n_score(3)}}
+                  onClick={()=>{next_n_score(3,allquestions[currQues]._id)}}
                 >
                   <p>{allquestions[currQues].options[3]}</p>
                 </button>
 
-          {/* <button 
+          <button 
           onClick ={() =>{
-            if(userAnswer == allquestions[currQues].answer){
-              setScore(score + 1)
-              console.log(userAnswer+" ---  "+ allquestions[currQues].answer)
-              console.log("CORRECT")
-            }
-            else {
-              console.log(userAnswer+" ---  "+ allquestions[currQues].answer)
-              console.log("WRONG")
-            }
             if(currQues < allquestions.length -1 ){
               setCurQues(currQues+1)
             }
@@ -98,10 +77,8 @@ return(<div>
             if(currQues > 0 ){
               setCurQues(currQues - 1)
             }
-          }}>previous</button>  */}
-          <button>
+          }}>previous</button> 
             <Link to={{ pathname: "/Result" , state: {score}}}>Submit</Link>
-          </button> 
         </div>
     </div>  
   )
