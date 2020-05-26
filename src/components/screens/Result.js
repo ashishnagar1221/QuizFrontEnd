@@ -8,7 +8,7 @@ const Result = (props) => {
     const [answerSheet,SetAnswerSheet] = useState([])
     
     useEffect (() =>{
-      fetch('http://localhost:3600/result',{
+      fetch('https://quizaap.herokuapp.com/result',{
         method:"post",
       headers : { 
         "Content-Type":"application/json",
@@ -35,12 +35,12 @@ const Result = (props) => {
         </div>
         <div>
           <table>
-            <th>
-              <td>No.</td>
-              <td>Question</td>
-              <td>User's Choice</td>
-              <td>Correct Answer</td>
-            </th>
+            <tr>
+              <th>No.</th>
+              <th>Question</th>
+              <th>User's Choice</th>
+              <th>Correct Answer</th>
+            </tr>
             
               {
                 answerSheet.map((ele,x) =>{
@@ -54,8 +54,6 @@ const Result = (props) => {
                   )
                 })
               }
-            
-            
           </table>
         </div>
     </div>

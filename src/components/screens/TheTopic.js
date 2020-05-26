@@ -10,7 +10,7 @@ const TheTopic = (props) => {
     const [thistopic,setThistopic] = useState([])
     const [toggleFollow,setToggleFollow] = useState("Follow")
     useEffect(() => {
-        fetch('http://localhost:3600/topic',{
+        fetch('https://quizaap.herokuapp.com/topic',{
           method:"post",
           headers:{
             "Content-Type":"application/json",
@@ -53,7 +53,7 @@ const TheTopic = (props) => {
             console.log(toggleFollow)
             if (toggleFollow=="Follow") setToggleFollow("Unfollow")
             else setToggleFollow("Follow")
-            fetch('http://localhost:3600/follow',{
+            fetch('https://quizaap.herokuapp.com/follow',{
               method:"put",
               headers : { 
                 "Content-Type":"application/json",

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import Anstally from "../AnsTally";
 
 const Dashboard = () => {
     const [userdata, setUserdata] = useState([]);
@@ -7,7 +8,7 @@ const Dashboard = () => {
     const [listId,setListId] = useState([])
 
   useEffect(() => {
-    fetch('http://localhost:3600/userprofile',{
+    fetch('https://quizaap.herokuapp.com/userprofile',{
       headers:{
         'Authorization':"Bearer "+ localStorage.getItem('jwt')
       }
@@ -87,6 +88,23 @@ const Dashboard = () => {
     })}
     </div>
     </div>
+    </div>
+
+    <div style ={{
+    margin:"20px auto",
+    boxSizing:"border-box",
+    border:"5px solid black",
+    borderRadius:"16px",
+    width:"80%",
+    height:"400px"}}>
+       <div style={{
+            textAlign:"center",
+            fontFamily:"'Montserrat Subrayada', sans-serif;",
+            textDecoration:"underline"
+        }}>
+        <h4>Game History</h4>
+        </div>
+        <Anstally></Anstally>
     </div>
     </div>
    )
