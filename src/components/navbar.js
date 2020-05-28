@@ -28,10 +28,14 @@ const NavBar = () =>{
     }
   }
   return (
-        <nav>
+        <nav className="Nav-trans">
         <div className="nav-wrapper">
-          <Link to={state?"/":"/login"} className="brand-logo left">Quiz App</Link>
-          <ul id="nav-mobile" className="right">
+          <Link to={state?"/dashboard":"/"} className="brand-logo left">
+            {/* <img style={{height:'60px'}}
+            src="https://www.pngitem.com/pimgs/m/291-2919867_transparent-q-and-a-png-letter-q-transparent.png"/> */}
+            Quiz App
+          </Link>
+          <ul id="nav-mobile" className="right black">
             {renderList()}
           </ul>
         </div>

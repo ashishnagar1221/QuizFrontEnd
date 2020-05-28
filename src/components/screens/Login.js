@@ -2,16 +2,16 @@ import React, {useState,useContext}from 'react'
 import {Link,useHistory} from 'react-router-dom'
 import {UserContext} from '../../App'
 import M from 'materialize-css'
+import NavBar from '../navbar'
 
 const Login = () => {
-
     const {state,dispatch} = useContext(UserContext)
     const history = useHistory();
     const [email,setEmail] = useState("");
     const [password,setPassword] = useState("");
 
     const PostData = ()=>{
-        fetch("https://quizaap.herokuapp.com/signin",{
+        fetch("http://localhost:3600/signin",{
             method:"post",
                 headers:{
                     "Content-Type":"application/json"
@@ -31,12 +31,14 @@ const Login = () => {
                         localStorage.setItem("user",JSON.stringify(data.user))
                         dispatch({type:"USER",payload:"data.user"})
                         M.toast({html:`SignedIn Success`})  
-                        history.push('/')
+                        history.push('/dashboard')
                     }
                 })
         }
 
   return(
+      <div>
+          <NavBar/>
     <div className="mycard">
     <div className="card auth-card"> 
     <h2>Login</h2>
@@ -58,6 +60,7 @@ const Login = () => {
             <Link to="/signup">Don't have account </Link> 
         </h5>
       </div>
+    </div>
     </div>
    )
 

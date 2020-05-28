@@ -10,6 +10,7 @@ import Alltopics from './components/screens/allTopics';
 import {reducer, initialState} from './components/reducers/userReducer'
 import TheTopic from './components/screens/TheTopic';
 import Result from './components/screens/Result';
+import Landing from './components/screens/Landing';
 
 export const UserContext = createContext()
 
@@ -21,13 +22,15 @@ const Routing  = ()=> {
     if(user){
       dispatch({type:"USER",payload:user})
     }else{
-      history.push('/login')
+      history.push('/')
     }
   },[])
+
+  
   return (
     <Switch>
-      <Route  exact path='/'>
-      <Alltopics/>
+      <Route exact path='/'>
+      <Landing/>
       </Route>
       <Route path='/login'>
       <Login/>
@@ -59,7 +62,6 @@ function App() {
  return (
    <UserContext.Provider value = {{state,dispatch}}>
      <BrowserRouter>
-     <NavBar/>
      <Routing/>
   </BrowserRouter>
    </UserContext.Provider>

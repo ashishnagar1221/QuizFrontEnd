@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
+import NavBar from '../navbar'
 
 const Result = (props) => {
     let score = useLocation()
@@ -8,7 +9,7 @@ const Result = (props) => {
     const [answerSheet,SetAnswerSheet] = useState([])
     
     useEffect (() =>{
-      fetch('https://quizaap.herokuapp.com/result',{
+      fetch('http://localhost:3600/result',{
         method:"post",
       headers : { 
         "Content-Type":"application/json",
@@ -28,7 +29,7 @@ const Result = (props) => {
     
   console.log(answerSheet)
   return(
-    <div>Result
+    <div><NavBar/>
         <div>
         <h3>Your Score </h3>
         <h6>{res.score}/5</h6>

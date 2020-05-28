@@ -1,6 +1,7 @@
 import React,{useState} from 'react';
 import {Link,useHistory} from 'react-router-dom'
 import M from 'materialize-css'
+import NavBar from '../navbar';
 /**
 * @author
 * @function Signup
@@ -13,7 +14,7 @@ const Signup = () => {
     const [password,setPassword] = useState("");
 
     const PostData = ()=>{
-        fetch("https://quizaap.herokuapp.com/signup",{
+        fetch("http://localhost:3600/signup",{
             method:"post",
                 headers:{
                     "Content-Type":"application/json"
@@ -37,6 +38,8 @@ const Signup = () => {
 
 
   return (
+      <div>
+          <NavBar/>
     <div className="mycard">
     <div className="card auth-card"> 
         <h2>SignUp</h2>
@@ -64,6 +67,7 @@ const Signup = () => {
         <Link to="/login">Already have an account</Link>
     </h5>
   </div>
+</div>
 </div>
    )
 

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Anstally from "../AnsTally";
+import NavBar from "../navbar";
 
 const Dashboard = () => {
     const [userdata, setUserdata] = useState([]);
@@ -8,65 +9,43 @@ const Dashboard = () => {
     const [listId,setListId] = useState([])
 
   useEffect(() => {
-    fetch('https://quizaap.herokuapp.com/userprofile',{
+    fetch('http://localhost:3600/userprofile',{
       headers:{
         'Authorization':"Bearer "+ localStorage.getItem('jwt')
       }
     })
     .then(res => res.json())
     .then(result =>{
-        //console.log(result)
         setUserdata(result)
         setList(result.tnaame)
         setListId(result.topic_followed)
     })
   },[])
-  
-  console.log(userdata)
-  //const renderList = 
-  
 
+  console.log(userdata)
 
   return(
     <div>
-        <div style={{
-        display:"flex",
-        width:"80%",
-        backgroundColor:"#230023",
-        justifyContent:"space-around",
-        boxSizing:"content-box",
-        margin:"20px auto"
-    }}>
+        <NavBar/>
+        <div className='profile-div'>
         <div>
-            <img style ={{width:"250px",height:"250px",borderRadius:"4px"}}
-            src ="https://images.unsplash.com/photo-1569466896818-335b1bedfcce?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+            <img className='profile-pic'
+            src ="https://moonvillageassociation.org/wp-content/uploads/2018/06/default-profile-picture1.jpg"
             />
         </div>
-        <div>
+        <div style={{
+          width:'90%',
+          textAlign:'center'
+        }}>
             <h4>{userdata.name}</h4>
+            <h5>{userdata.email}</h5>
         </div>
     </div>
 
 
-    <div  style ={{
-    margin:"20px auto",
-    boxSizing:"border-box",
-    border:"5px solid black",
-    borderRadius:"16px",
-    width:"80%",
-    height:"400px"
-}}>
-    <div style ={{
-        display:"flex",
-        flexDirection:"column",
-        justifyContent:"space-between",
-        flexWrap:"wrap"
-    }}>
-        <div style={{
-            textAlign:"center",
-            fontFamily:"'Montserrat Subrayada', sans-serif;",
-            textDecoration:"underline"
-        }}>
+    <div className='topic-div'>
+    <div className='topic-head'>
+        <div className='topic-heading'>
         <h4>Topic Followed</h4>
         </div>
         <div style ={{
@@ -76,7 +55,7 @@ const Dashboard = () => {
     }}>
         {list.map((ele,i) =>{
         return (
-            <div>
+            <div style ={{}}>
              <img style ={{width:"150px",height:"150px",borderRadius:"75px"}}
              src="https://images.unsplash.com/photo-1531956656798-56686eeef3d4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt=""/>
              <h6 style={{

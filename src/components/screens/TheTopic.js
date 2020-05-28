@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react'
 import {useLocation, Link , useHistory} from "react-router-dom"
 import {UserContext} from '../../App'
 import M from 'materialize-css'
+import NavBar from '../navbar'
 
 const TheTopic = (props) => {
     let data = useLocation()
@@ -10,7 +11,7 @@ const TheTopic = (props) => {
     const [thistopic,setThistopic] = useState([])
     const [toggleFollow,setToggleFollow] = useState("Follow")
     useEffect(() => {
-        fetch('https://quizaap.herokuapp.com/topic',{
+        fetch('http://localhost:3600/topic',{
           method:"post",
           headers:{
             "Content-Type":"application/json",
@@ -31,6 +32,7 @@ const TheTopic = (props) => {
       //console.log(thistopic._id)
   return(
     <div>
+      <NavBar/>
       <div style={{
         display:"flex",
         width:"80%",
@@ -53,7 +55,7 @@ const TheTopic = (props) => {
             console.log(toggleFollow)
             if (toggleFollow=="Follow") setToggleFollow("Unfollow")
             else setToggleFollow("Follow")
-            fetch('https://quizaap.herokuapp.com/follow',{
+            fetch('http://localhost:3600/follow',{
               method:"put",
               headers : { 
                 "Content-Type":"application/json",
