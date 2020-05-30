@@ -1,7 +1,6 @@
 import React,{useEffect,createContext, useReducer, useContext} from 'react';
 import {BrowserRouter,Route, Switch, useHistory} from 'react-router-dom'
 import './App.css';
-import NavBar from './components/navbar'
 import Login from './components/screens/Login'
 import SignUp from './components/screens/Signup'
 import Quiz from './components/screens/Quiz'
@@ -20,6 +19,7 @@ const Routing  = ()=> {
   useEffect (() =>{
     const user = JSON.parse(localStorage.getItem("user"))
     if(user){
+      history.push('/dashboard')
       dispatch({type:"USER",payload:user})
     }else{
       history.push('/')

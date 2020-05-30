@@ -9,7 +9,7 @@ const Result = (props) => {
     const [answerSheet,SetAnswerSheet] = useState([])
     
     useEffect (() =>{
-      fetch('http://localhost:3600/result',{
+      fetch('https://quizaap.herokuapp.com/result',{
         method:"post",
       headers : { 
         "Content-Type":"application/json",
@@ -30,9 +30,13 @@ const Result = (props) => {
   console.log(answerSheet)
   return(
     <div><NavBar/>
-        <div>
-        <h3>Your Score </h3>
-        <h6>{res.score}/5</h6>
+        <div style ={{
+          width:'80%',
+          margin:'20px auto'
+        }}>
+          <div>
+        <h3 style ={{textAlign:'center'}}>Your Score </h3>
+        <h4 style ={{textAlign:'center'}}>{res.score}/5</h4>
         </div>
         <div>
           <table>
@@ -48,14 +52,15 @@ const Result = (props) => {
                   return(
                     <tr>
                     <td>{x+1}</td>
-                    <td>{ele.question}</td>
-                    <td>{ele.marked_choice}</td>
-                    <td>{ele.correct_choice}</td>
+                    <td style ={{textAlign:'center'}}>{ele.question}</td>
+                    <td style ={{textAlign:'center'}}>{ele.marked_choice}</td>
+                    <td style ={{textAlign:'center'}}>{ele.correct_choice}</td>
                     </tr>
                   )
                 })
               }
           </table>
+        </div>
         </div>
     </div>
     

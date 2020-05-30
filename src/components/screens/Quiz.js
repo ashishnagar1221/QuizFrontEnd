@@ -10,7 +10,7 @@ const Quiz = () => {
 
   
   useEffect (() =>{
-    fetch('http://localhost:3600/gameStart',{
+    fetch('https://quizaap.herokuapp.com/gameStart',{
       method:"post",
     headers : { 
       "Content-Type":"application/json",
@@ -38,34 +38,81 @@ console.log(score)
 
 if(!allquestions.length){
 return(<div>
- <img src ="https://i2.wp.com/codemyui.com/wp-content/uploads/2017/09/rotate-pulsating-loading-animation.gif?fit=880%2C440&ssl=1" alt=""/>
+ <img style={{
+             position: 'relative',
+             height:'100vh',
+             width: '100%'
+         }}src ="https://i2.wp.com/codemyui.com/wp-content/uploads/2017/09/rotate-pulsating-loading-animation.gif?fit=880%2C440&ssl=1" alt=""/>
 </div>)
 }
   return(  
-    <div>
-        <div >
-          <h5>{allquestions[currQues].question}</h5>
-                <button 
+    <div style={{
+      width:'80%',
+      textAlign:'center',
+      margin:"20px auto",
+      height:'70vh'
+    }}>
+        <div>
+             <Link to={{ pathname: "/Result" , state: {score}}}>Submit</Link>
+          <div style ={{
+            paddingTop:'30px',
+            margin:"20px auto"
+      }}>
+
+            <h5>{allquestions[currQues].question}</h5>
+          </div>
+          <div>
+            <div  style ={{
+            display:'flex',
+            justifyContent:'center'
+          }}>
+                <button style ={{
+                  margin:'10px',
+                  width:'38%'
+                  
+                }}
                   onClick={()=>{next_n_score(0,allquestions[currQues])}}
                 >
                   <p>{allquestions[currQues].options[0]}</p>
                 </button>
-                <button 
+                <button style ={{
+                  margin:'10px',
+                  width:'38%'
+                }}
                   onClick={()=>{next_n_score(1,allquestions[currQues])}}
                 >
                   <p>{allquestions[currQues].options[1]}</p>
                 </button>
-                <button 
+              </div>
+              <div>
+                <button style ={{
+                  margin:'10px',
+                  width:'38%'
+                }}
                   onClick={()=>{next_n_score(2,allquestions[currQues])}}
                 >
                   <p>{allquestions[currQues].options[2]}</p>
                 </button>
-                <button 
+                <button style ={{
+                  margin:'10px',
+                  width:'38%'
+                }}
                   onClick={()=>{next_n_score(3,allquestions[currQues])}}
                 >
                   <p>{allquestions[currQues].options[3]}</p>
                 </button>
-
+                </div>
+          </div>
+          <div  style ={{
+            display:'flex',
+            justifyContent:'space-around'
+          }}>
+          <button 
+          onClick={() =>{
+            if(currQues > 0 ){
+              setCurQues(currQues - 1)
+            }
+          }}>previous</button>
           <button 
           onClick ={() =>{
             if(currQues < allquestions.length -1 ){
@@ -74,13 +121,7 @@ return(<div>
             }}>
               next
             </button>
-          <button 
-          onClick={() =>{
-            if(currQues > 0 ){
-              setCurQues(currQues - 1)
-            }
-          }}>previous</button> 
-            <Link to={{ pathname: "/Result" , state: {score}}}>Submit</Link>
+          </div>
         </div>
     </div>  
   )

@@ -6,10 +6,15 @@ const Landing = (props) => {
   return(
     <section className='landing'>
         <NavBar/>
-        <div>
+        <div style ={{
+          textAlign:"center",
+          backgroundColor: '#00000040',
+          margin:'80px 40% 0px 30px',
+          paddingBottom:'40px'
+        }}>
           <h1 style={{
-              textAlign:"center",
-              color:"#1b6ca8"
+              color:"#1b6ca8",
+              fontFamily:"'Piedra', cursive"
           }}>
             Quizzera</h1>
             <div>
@@ -27,8 +32,8 @@ const Landing = (props) => {
               </p>
             </div>
             <div>
-              <button><Link to="/login">Login</Link></button>
-              <button><Link to="/Signup">SignUp</Link></button>
+              <button className ='waves-effect waves-light btn-large '><Link className='link' to="/login">Login</Link></button>
+              <button className ='waves-effect waves-light btn-large '><Link className='link' to="/Signup">SignUp</Link></button>
             </div>
         </div>
     </section>

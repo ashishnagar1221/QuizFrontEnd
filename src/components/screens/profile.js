@@ -9,7 +9,7 @@ const Dashboard = () => {
     const [listId,setListId] = useState([])
 
   useEffect(() => {
-    fetch('http://localhost:3600/userprofile',{
+    fetch('https://quizaap.herokuapp.com/userprofile',{
       headers:{
         'Authorization':"Bearer "+ localStorage.getItem('jwt')
       }
@@ -22,7 +22,17 @@ const Dashboard = () => {
     })
   },[])
 
-  console.log(userdata)
+ console.log(userdata.length)
+  if(userdata.length != undefined ){
+    return(<div>
+     <img style={{
+         position: 'relative',
+         height:'100vh',
+         width: '100%'
+     }} src ="https://i2.wp.com/codemyui.com/wp-content/uploads/2017/09/rotate-pulsating-loading-animation.gif?fit=880%2C440&ssl=1" alt=""/>
+    </div>)
+    }
+
 
   return(
     <div>

@@ -18,8 +18,9 @@ body{
 
   .landing{
     position: relative;
-    background: url('https://besthqwallpapers.com/Uploads/3-2-2018/39426/question-sign-4k-3d-art-creative-concept.jpg') no-repeat center center/cover;
     height: 100vh;
+    background: url('https://besthqwallpapers.com/Uploads/3-2-2018/39426/question-sign-4k-3d-art-creative-concept.jpg') no-repeat center center/cover;
+    
   }
   
   .Nav-trans{

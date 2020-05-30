@@ -11,7 +11,7 @@ const TheTopic = (props) => {
     const [thistopic,setThistopic] = useState([])
     const [toggleFollow,setToggleFollow] = useState("Follow")
     useEffect(() => {
-        fetch('http://localhost:3600/topic',{
+        fetch('https://quizaap.herokuapp.com/topic',{
           method:"post",
           headers:{
             "Content-Type":"application/json",
@@ -22,14 +22,11 @@ const TheTopic = (props) => {
         })
         })
         .then(res => res.json())
-        .then(result =>{
-            console.log(result)
+        .then(result =>{  
             setThistopic(result)
         })
       },[])
 
-      console.log(data)
-      //console.log(thistopic._id)
   return(
     <div>
       <NavBar/>
@@ -45,7 +42,8 @@ const TheTopic = (props) => {
           />
           </div>
           <div>
-          <button 
+          <button
+          style={{marginRight:'50px'}}
           className ='btn waves-effect waves-light #c62828 blue darken-3'
           ><Link className ="link" to={{ pathname: "/Quiz" , state: {_id:thistopic._id}}}>Start game</Link>
           </button>
@@ -55,7 +53,7 @@ const TheTopic = (props) => {
             console.log(toggleFollow)
             if (toggleFollow=="Follow") setToggleFollow("Unfollow")
             else setToggleFollow("Follow")
-            fetch('http://localhost:3600/follow',{
+            fetch('https://quizaap.herokuapp.com/follow',{
               method:"put",
               headers : { 
                 "Content-Type":"application/json",
@@ -66,21 +64,28 @@ const TheTopic = (props) => {
             })
             })
             .then(res => {
-              M.toast({html:`${toggleFollow}ed this topic `})  
-              //history.push('/dashboard')
-              //res.json()
+              M.toast({html:`${toggleFollow}ed this topic `})
             })
           }}
           >{toggleFollow}
           </button>
           </div>
       </div>
+      <div style={{
+        width:"80%",
+        margin:"20px auto",
+        fontFamily: "'Exo 2', sans-serif",
+        textAlign:'justify'
+      }}>
       <div>
-        <h4>{thistopic.name}</h4>
+        <h4 style ={{
+          textAlign:'center'
+        }}>{thistopic.name}</h4>
       </div>
       <div>
-        <h4>Description</h4>
+        
         <p>{thistopic.Description}</p>
+      </div>
       </div>
     </div>
    )
