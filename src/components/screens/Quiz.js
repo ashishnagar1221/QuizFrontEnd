@@ -91,7 +91,7 @@ return(<div>
                 }}
                   onClick={()=>{next_n_score(0,allquestions[currQues])}}
                 >
-                  <p>{allquestions[currQues].options[0]}</p>
+                  <p>{currQues+1+'. '+allquestions[currQues].options[0]}</p>
                 </button>
                 <button style ={{
                   margin:'10px',
