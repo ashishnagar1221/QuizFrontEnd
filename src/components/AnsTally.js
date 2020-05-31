@@ -40,7 +40,7 @@ const Anstally = (props) => {
                     return(
                         <tr>
                         <td>{x}</td>
-                        <td>{ele.id}</td>
+                        <td>{ele.topic}</td>
                         <td>{ele.score}</td>
                         </tr>
                     )

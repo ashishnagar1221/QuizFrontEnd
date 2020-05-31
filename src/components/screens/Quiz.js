@@ -36,6 +36,7 @@ const next_n_score = (x,ques) =>{
   setScore(prev => [...prev,{"ques_id":ques._id,"question":ques.question,"opt":x,"ans":ques.answer}])
 }
 console.log(score)
+console.log(data.state.name)
 
 if(!allquestions.length){
 return(<div>
@@ -67,7 +68,7 @@ return(<div>
             <Link
                 to={{ 
                 pathname: "/Result" ,
-                state: {score}
+                state: {score,"topic":data.state.name}
                }}>
                  Submit
               </Link>

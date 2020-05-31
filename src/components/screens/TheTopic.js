@@ -45,7 +45,7 @@ const TheTopic = (props) => {
           <button
           style={{marginRight:'50px'}}
           className ='btn waves-effect waves-light #c62828 blue darken-3'
-          ><Link className ="link" to={{ pathname: "/Quiz" , state: {_id:thistopic._id}}}>Start game</Link>
+          ><Link className ="link" to={{ pathname: "/Quiz" , state: {_id:thistopic._id,name:thistopic.name}}}>Start game</Link>
           </button>
           <button 
           className ='btn waves-effect waves-light #c62828 green darken-3'

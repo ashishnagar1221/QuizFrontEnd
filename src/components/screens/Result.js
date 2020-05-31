@@ -4,7 +4,7 @@ import NavBar from '../navbar'
 
 const Result = (props) => {
     let score = useLocation()
-    console.log(score.state.score)
+    console.log(score.state)
     const [res,setRes] = useState([])
     const [answerSheet,SetAnswerSheet] = useState([])
     
@@ -17,7 +17,8 @@ const Result = (props) => {
         'Authorization':"Bearer "+ localStorage.getItem('jwt')
       },
       body:JSON.stringify({
-        user:score.state.score
+        user:score.state.score,
+        topic:score.state.topic
     })
     })
     .then(res => res.json())
