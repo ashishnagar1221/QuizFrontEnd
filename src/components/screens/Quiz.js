@@ -1,6 +1,7 @@
 import React, { useState, useEffect} from 'react'
 import { useLocation, Link, Redirect } from 'react-router-dom'
 import { render } from '@testing-library/react';
+import NavBar from '../navbar';
 
 const Quiz = () => {
    let data = useLocation() 
@@ -45,7 +46,9 @@ return(<div>
          }}src ="https://i2.wp.com/codemyui.com/wp-content/uploads/2017/09/rotate-pulsating-loading-animation.gif?fit=880%2C440&ssl=1" alt=""/>
 </div>)
 }
-  return(  
+  return( 
+    <div>
+      <NavBar/> 
     <div style={{
       width:'80%',
       textAlign:'center',
@@ -53,7 +56,22 @@ return(<div>
       height:'70vh'
     }}>
         <div>
-             <Link to={{ pathname: "/Result" , state: {score}}}>Submit</Link>
+          <div 
+                style={{
+                  color:'black',
+                  padding:'8px',
+                  border:'1px solid black',
+                  marginLeft:'78%',
+                  width:'15%'
+                }}>
+            <Link
+                to={{ 
+                pathname: "/Result" ,
+                state: {score}
+               }}>
+                 Submit
+              </Link>
+          </div>
           <div style ={{
             paddingTop:'30px',
             margin:"20px auto"
@@ -122,6 +140,7 @@ return(<div>
               next
             </button>
           </div>
+        </div>
         </div>
     </div>  
   )
