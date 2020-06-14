@@ -11,7 +11,7 @@ const Quiz = () => {
 
   
   useEffect (() =>{
-    fetch('https://quizaap.herokuapp.com/gameStart',{
+    fetch('http://localhost:3600/gameStart',{
       method:"post",
     headers : { 
       "Content-Type":"application/json",
@@ -27,16 +27,18 @@ const Quiz = () => {
   })
 },[]) 
 
-console.log(allquestions)
+// console.log(allquestions)
 
 // const nextState = score.map(a => a.ques != ques ? [...a,{"ques":ques,"ans":x}]:a)
 // setScore(nextState)
 //function to combine next and score update
 const next_n_score = (x,ques) =>{
-  setScore(prev => [...prev,{"ques_id":ques._id,"question":ques.question,"opt":x,"ans":ques.answer}])
+  // score[x]? (score[x].ques_id ?setScore(prev => [...prev.slice(0,-1)]):console.log("wait")):console.log("wait fo score")
+  setScore(prev => (prev[x].ques_id == ques._id ?[...prev.slice(0,-1)]: [...prev,{"ques_id":ques._id,"question":ques.question,"opt":x,"ans":ques.answer}]))
+  //setScore(prev => [...prev,{"ques_id":ques._id,"question":ques.question,"opt":x,"ans":ques.answer}])
 }
 console.log(score)
-console.log(data.state.name)
+// console.log(data.state.name)
 
 if(!allquestions.length){
 return(<div>
@@ -78,7 +80,7 @@ return(<div>
             margin:"20px auto"
       }}>
 
-            <h5>{allquestions[currQues].question}</h5>
+            <h5>{currQues+1+'. '+allquestions[currQues].question}</h5>
           </div>
           <div>
             <div  style ={{
@@ -92,7 +94,7 @@ return(<div>
                 }}
                   onClick={()=>{next_n_score(0,allquestions[currQues])}}
                 >
-                  <p>{currQues+1+'. '+allquestions[currQues].options[0]}</p>
+                  <p>{allquestions[currQues].options[0]}</p>
                 </button>
                 <button style ={{
                   margin:'10px',

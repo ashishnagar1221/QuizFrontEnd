@@ -9,9 +9,15 @@ const TheTopic = (props) => {
     const history = useHistory()
     const {state,dispatch} = useContext(UserContext)
     const [thistopic,setThistopic] = useState([])
-    const [toggleFollow,setToggleFollow] = useState("Follow")
+    // console.log({"state ":state})
+    // console.log({"thistopic ":thistopic})
+    const test = thistopic ? state.topic_followed.includes(thistopic._id):false;
+    // //const followfunc = thistopic.followedBy ? thistopic.followedBy.includes(state._id):false;
+    const [toggleFollow,setToggleFollow] = useState(test ? "Unfollow":"Follow")
+     console.log(test)
+
     useEffect(() => {
-        fetch('https://quizaap.herokuapp.com/topic',{
+        fetch('http://localhost:3600/topic',{
           method:"post",
           headers:{
             "Content-Type":"application/json",
@@ -50,10 +56,8 @@ const TheTopic = (props) => {
           <button 
           className ='btn waves-effect waves-light #c62828 green darken-3'
           onClick={() =>{
-            console.log(toggleFollow)
-            if (toggleFollow=="Follow") setToggleFollow("Unfollow")
-            else setToggleFollow("Follow")
-            fetch('https://quizaap.herokuapp.com/follow',{
+            setToggleFollow(test ?"Unfollow":"Follow")
+            fetch('http://localhost:3600/follow',{
               method:"put",
               headers : { 
                 "Content-Type":"application/json",
@@ -64,7 +68,7 @@ const TheTopic = (props) => {
             })
             })
             .then(res => {
-              M.toast({html:`${toggleFollow}ed this topic `})
+              M.toast({html:`status changed`})
             })
           }}
           >{toggleFollow}

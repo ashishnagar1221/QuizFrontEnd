@@ -7,7 +7,7 @@ import NavBar from "../navbar";
 const Alltopics = () => {
     const [topicList,setTopicList] = useState([])
     useEffect(() => {
-        fetch('https://quizaap.herokuapp.com/alltopic',{
+        fetch('http://localhost:3600/alltopic',{
           headers:{
             "Content-Type":"application/json",
             'Authorization':"Bearer "+ localStorage.getItem('jwt')

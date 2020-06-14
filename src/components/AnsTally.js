@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 const Anstally = (props) => {
     const [gameHistory,setGameHistory] = useState([])
     useEffect(()=>{
-        fetch('https://quizaap.herokuapp.com/gamehistory',{
+        fetch('http://localhost:3600/gamehistory',{
             
             headers : { 
               "Content-Type":"application/json",
@@ -39,7 +39,7 @@ const Anstally = (props) => {
                 gameHistory.map((ele,x) =>{
                     return(
                         <tr>
-                        <td>{x}</td>
+                        <td>{x+1}</td>
                         <td>{ele.topic}</td>
                         <td>{ele.score}</td>
                         </tr>
