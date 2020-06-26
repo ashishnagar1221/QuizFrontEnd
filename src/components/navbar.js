@@ -6,7 +6,7 @@ const NavBar = () =>{
   const {state,dispatch} = useContext(UserContext)
   const history = useHistory()
   const renderList = () =>{
-    if(state) {
+    if(state){
       return[
         <li><Link style={{color:'#1b6ca8'}} to="/Alltopics">Alltopics</Link></li>,
         <li><Link style={{color:'#1b6ca8'}} to='/dashboard'>dashboard</Link></li>,
