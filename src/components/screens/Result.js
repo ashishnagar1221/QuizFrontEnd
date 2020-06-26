@@ -9,7 +9,7 @@ const Result = (props) => {
     const [answerSheet,SetAnswerSheet] = useState([])
     
     useEffect (() =>{
-      fetch('http://localhost:3600/result',{
+      fetch(https://quizaap.herokuapp.com/result',{
         method:"post",
       headers : { 
         "Content-Type":"application/json",

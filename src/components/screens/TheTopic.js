@@ -17,7 +17,7 @@ const TheTopic = (props) => {
      console.log(test)
 
     useEffect(() => {
-        fetch('http://localhost:3600/topic',{
+        fetch(https://quizaap.herokuapp.com/topic',{
           method:"post",
           headers:{
             "Content-Type":"application/json",
@@ -57,7 +57,7 @@ const TheTopic = (props) => {
           className ='btn waves-effect waves-light #c62828 green darken-3'
           onClick={() =>{
             setToggleFollow(test ?"Unfollow":"Follow")
-            fetch('http://localhost:3600/follow',{
+            fetch(https://quizaap.herokuapp.com/follow',{
               method:"put",
               headers : { 
                 "Content-Type":"application/json",
