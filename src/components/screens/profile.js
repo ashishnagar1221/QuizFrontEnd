@@ -9,7 +9,7 @@ const Dashboard = () => {
     const [listId,setListId] = useState([])
 
   useEffect(() => {
-    fetch('https://quizaap.herokuapp.com/userprofile',{
+    fetch("https://quizaap.herokuapp.com/userprofile",{
       headers:{
         'Authorization':"Bearer "+ localStorage.getItem('jwt')
       }
