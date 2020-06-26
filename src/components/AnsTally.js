@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 const Anstally = (props) => {
     const [gameHistory,setGameHistory] = useState([])
     useEffect(()=>{
-        fetch(https://quizaap.herokuapp.com/gamehistory',{
+        fetch('https://quizaap.herokuapp.com/gamehistory',{
             
             headers : { 
               "Content-Type":"application/json",
