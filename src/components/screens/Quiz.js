@@ -34,8 +34,8 @@ const Quiz = () => {
 //function to combine next and score update
 const next_n_score = (x,ques) =>{
   // score[x]? (score[x].ques_id ?setScore(prev => [...prev.slice(0,-1)]):console.log("wait")):console.log("wait fo score")
-  setScore(prev => (prev[x].ques_id == ques._id ?[...prev.slice(0,-1)]: [...prev,{"ques_id":ques._id,"question":ques.question,"opt":x,"ans":ques.answer}]))
-  //setScore(prev => [...prev,{"ques_id":ques._id,"question":ques.question,"opt":x,"ans":ques.answer}])
+  //setScore(prev => (prev[x].ques_id == ques._id ?[...prev.slice(0,-1)]: [...prev,{"ques_id":ques._id,"question":ques.question,"opt":x,"ans":ques.answer}]))
+  setScore(prev => [...prev,{"ques_id":ques._id,"question":ques.question,"opt":x,"ans":ques.answer}])
 }
 console.log(score)
 // console.log(data.state.name)
