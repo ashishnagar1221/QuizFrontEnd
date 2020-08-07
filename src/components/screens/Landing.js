@@ -23,11 +23,10 @@ const Landing = (props) => {
             <div>
               <p>
                 <ul>
-                  <li>fdfjdsbvkjbd kjbdkjbvkj  bkjbdvkjb dvbvkj </li>
-                  <li>fdfjdsbvkjbd kjbdkjbvkj  bkjbdvkjb dvbvkj </li>
-                  <li>fdfjdsbvkjbd kjbdkjbvkj  bkjbdvkjb dvbvkj </li>
-                  <li>fdfjdsbvkjbd kjbdkjbvkj  bkjbdvkjb dvbvkj </li>
-                  <li>fdfjdsbvkjbd kjbdkjbvkj  bkjbdvkjb dvbvkj </li>
+                  <li>This quiz gives you an endless stream of Technical knowledge questions. </li>
+                  <li>The questions are hand-selected and are designed to test a wide range of your general knowledge. </li>
+                  <li>You can track your progress with score secure in each game at dashboard.</li>
+                  <li>At the end of the quiz, the score is shown, and table of correct and incorrect answers are displayed, for one to understand where the mistake was made.</li>
                 </ul>
               </p>
             </div>

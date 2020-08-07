@@ -36,6 +36,26 @@ const next_n_score = (x,ques) =>{
   // score[x]? (score[x].ques_id ?setScore(prev => [...prev.slice(0,-1)]):console.log("wait")):console.log("wait fo score")
   //setScore(prev => (prev[x].ques_id == ques._id ?[...prev.slice(0,-1)]: [...prev,{"ques_id":ques._id,"question":ques.question,"opt":x,"ans":ques.answer}]))
   setScore(prev => [...prev,{"ques_id":ques._id,"question":ques.question,"opt":x,"ans":ques.answer}])
+
+  // console.log(ques)
+  // if(score.length == 0)
+  //   setScore(prev => [...prev,{"ques_id":ques._id,"question":ques.question,"opt":x,"ans":ques.answer}])
+  // else{
+  //   setScore(prev =>({
+  //     score: prev.score.map(obj =>(obj.ques_id == ques.ques_id ? Object.assign(obj,{"opt":x}):obj))
+  //   })
+  //   )}
+
+  // score.forEach(e=>{
+  //    if(e.ques_id != ques._id)
+  //    console.log(e.ques_id +"  "+ ques._id)
+  //   })
+  // setScore(prev => [...prev,{"ques_id":ques._id,"question":ques.question,"opt":x,"ans":ques.answer}])
+  // setScore(prev =>({
+  //   score: prev.score.map(
+  //     obj =>(obj.ques_id == ques.ques_id ? Object.assign(obj,{"opt":x}):obj)
+  //   )
+  // }))
 }
 console.log(score)
 // console.log(data.state.name)
