@@ -4,7 +4,7 @@ import { render } from '@testing-library/react';
 import NavBar from '../navbar';
 
 const Quiz = () => {
-   let data = useLocation() 
+  let data = useLocation() 
   const [allquestions,setAllquestions] = useState([])
   const [currQues,setCurQues] = useState(0)
   const [score,setScore]= useState([])
@@ -27,38 +27,24 @@ const Quiz = () => {
   })
 },[]) 
 
-// console.log(allquestions)
-
-// const nextState = score.map(a => a.ques != ques ? [...a,{"ques":ques,"ans":x}]:a)
-// setScore(nextState)
-//function to combine next and score update
 const next_n_score = (x,ques) =>{
-  // score[x]? (score[x].ques_id ?setScore(prev => [...prev.slice(0,-1)]):console.log("wait")):console.log("wait fo score")
-  //setScore(prev => (prev[x].ques_id == ques._id ?[...prev.slice(0,-1)]: [...prev,{"ques_id":ques._id,"question":ques.question,"opt":x,"ans":ques.answer}]))
-  setScore(prev => [...prev,{"ques_id":ques._id,"question":ques.question,"opt":x,"ans":ques.answer}])
-
-  // console.log(ques)
-  // if(score.length == 0)
-  //   setScore(prev => [...prev,{"ques_id":ques._id,"question":ques.question,"opt":x,"ans":ques.answer}])
-  // else{
-  //   setScore(prev =>({
-  //     score: prev.score.map(obj =>(obj.ques_id == ques.ques_id ? Object.assign(obj,{"opt":x}):obj))
-  //   })
-  //   )}
-
-  // score.forEach(e=>{
-  //    if(e.ques_id != ques._id)
-  //    console.log(e.ques_id +"  "+ ques._id)
-  //   })
-  // setScore(prev => [...prev,{"ques_id":ques._id,"question":ques.question,"opt":x,"ans":ques.answer}])
-  // setScore(prev =>({
-  //   score: prev.score.map(
-  //     obj =>(obj.ques_id == ques.ques_id ? Object.assign(obj,{"opt":x}):obj)
-  //   )
-  // }))
+  if(score.length == 0){
+    setScore(prev => [...prev,{"ques_id":ques._id,"question":ques.question,"opt":x,"ans":ques.answer}])
+  }
+  else{
+    let reset = score.find(ele =>ele.ques_id == ques._id)
+    if(reset){
+      score.forEach(ele =>{
+          if(ele.ques_id == ques._id){
+            ele.opt = x
+          }
+        })
+    }else    
+    setScore(prev => [...prev,{"ques_id":ques._id,"question":ques.question,"opt":x,"ans":ques.answer}])
+  }
+ 
 }
 console.log(score)
-// console.log(data.state.name)
 
 if(!allquestions.length){
 return(<div>
